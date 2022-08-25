@@ -3,7 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.kyungeun.compose_swipeview">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".ui.MainApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,9 +17,14 @@
         android:theme="@style/Theme.ComposeSwipeView"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.expand.ExpandActivity"
+            android:exported="false"
+            android:label="@string/title_activity_expand"
+            android:theme="@style/Theme.ComposeSwipeView" />
+        <activity
+            android:name=".ui.main.MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
+            android:label="@string/title_activity_main"
             android:theme="@style/Theme.ComposeSwipeView">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
