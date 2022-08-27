@@ -1,4 +1,4 @@
-package com.kyungeun.compose_swipeview
+package com.kyungeun.compose_swipeview.ui.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,12 +12,12 @@ import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.kyungeun.compose_swipeview.R
+import com.kyungeun.compose_swipeview.ui.expand.ExpandActivity
 import com.kyungeun.compose_swipeview.ui.theme.ComposeSwipeViewTheme
 
 class MainActivity : ComponentActivity() {
