@@ -1,7 +1,5 @@
 package com.kyungeun.compose_swipeview.ui.expand
 
-import android.util.Log
-import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
@@ -28,7 +26,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.lerp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -36,21 +33,19 @@ import androidx.constraintlayout.compose.Dimension
 import com.airbnb.lottie.compose.*
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.google.accompanist.pager.rememberPagerState
-import com.kyungeun.compose_swipeview.*
 import com.kyungeun.compose_swipeview.R
 import com.kyungeun.compose_swipeview.data.Product
+import com.kyungeun.compose_swipeview.data.ProductDataManager
 import com.kyungeun.compose_swipeview.ui.theme.BlueOnboarding
 import com.kyungeun.compose_swipeview.ui.theme.ComposeSwipeViewTheme
-import com.kyungeun.compose_swipeview.ui.theme.Gray
-import com.kyungeun.compose_swipeview.util.*
+import com.kyungeun.compose_swipeview.util.EMPTY
+import com.kyungeun.compose_swipeview.util.PageIndicator
+import com.kyungeun.compose_swipeview.util.lerp
+import com.kyungeun.compose_swipeview.verticalGradientScrim
 import com.skydoves.landscapist.coil.CoilImage
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import java.text.DecimalFormat
-import com.airbnb.lottie.compose.LottieAnimation
-import kotlinx.coroutines.delay
 
 private val InfoContainerMaxHeight = 600.dp
 private val InfoContainerMinHeight = 120.dp //title screen height
@@ -428,7 +423,7 @@ fun LottieClickAnim() {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 18.dp)
+            .padding(top = 25.dp)
     ) {
         LottieAnimation(
             composition = composition,

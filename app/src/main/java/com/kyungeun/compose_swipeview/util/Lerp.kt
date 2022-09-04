@@ -1,9 +1,6 @@
 package com.kyungeun.compose_swipeview.util
 import androidx.annotation.FloatRange
 
-/**
- * Linearly interpolate between two values
- */
 fun lerp(
     startValue: Float,
     endValue: Float,

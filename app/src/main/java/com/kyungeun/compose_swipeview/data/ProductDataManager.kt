@@ -1,6 +1,4 @@
-package com.kyungeun.compose_swipeview
-
-import com.kyungeun.compose_swipeview.data.Product
+package com.kyungeun.compose_swipeview.data
 
 object ProductDataManager {
 
