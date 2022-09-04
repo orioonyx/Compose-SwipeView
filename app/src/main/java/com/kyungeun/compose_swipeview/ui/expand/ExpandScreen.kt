@@ -1,5 +1,6 @@
 package com.kyungeun.compose_swipeview.ui.expand
 
+import android.util.Log
 import androidx.annotation.StringRes
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
@@ -25,17 +26,20 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.lerp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.HorizontalPager
+import com.google.accompanist.pager.pagerTabIndicatorOffset
+import com.google.accompanist.pager.rememberPagerState
 import com.kyungeun.compose_swipeview.*
 import com.kyungeun.compose_swipeview.R
 import com.kyungeun.compose_swipeview.data.Product
 import com.kyungeun.compose_swipeview.ui.theme.BlueOnboarding
 import com.kyungeun.compose_swipeview.ui.theme.ComposeSwipeViewTheme
 import com.kyungeun.compose_swipeview.ui.theme.Gray
-import com.kyungeun.compose_swipeview.util.PageIndicator
-import com.kyungeun.compose_swipeview.util.Pager
-import com.kyungeun.compose_swipeview.util.PagerState
+import com.kyungeun.compose_swipeview.util.*
 import com.skydoves.landscapist.coil.CoilImage
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -44,7 +48,7 @@ import java.text.DecimalFormat
 private val InfoContainerMaxHeight = 600.dp
 private val InfoContainerMinHeight = 120.dp //title screen height
 
-@OptIn(ExperimentalMaterialApi::class)
+@OptIn(ExperimentalMaterialApi::class, ExperimentalPagerApi::class)
 @Composable
 fun ExpandScreen(product: Product, onBackPressed: () -> Unit) {
     BoxWithConstraints {
@@ -104,7 +108,7 @@ fun ExpandScreen(product: Product, onBackPressed: () -> Unit) {
                     }
             ) {
                 CoilImage(
-                    imageModel = product.imageList[0],
+                    imageModel = product.imageList[pagerState.currentPage],
                     // Crop, Fit, Inside, FillHeight, FillWidth, None
                     contentScale = ContentScale.Crop,
                     // shows a placeholder while loading the image.
@@ -182,7 +186,7 @@ fun PageIndicator(modifier: Modifier, count: Int, currentPage: Int) {
 @Composable
 fun TopBar(modifier: Modifier, onBackPressed: () -> Unit) {
     ConstraintLayout(modifier) {
-        val (back, share) = createRefs()
+        val (back, _) = createRefs()
         GradientScreen(modifier = Modifier.fillMaxSize(), 1f, 0f)
 
         IconButton(
