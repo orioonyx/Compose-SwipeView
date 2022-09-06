@@ -15,6 +15,7 @@ import com.kyungeun.compose_swipeview.ui.theme.ComposeSwipeViewTheme
 class ExpandActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             ExpandApp()
         }
@@ -29,8 +30,10 @@ class ExpandActivity : ComponentActivity() {
             ) {
                 val productSample = ProductDataManager.getProduct()
                 val navController = rememberNavController()
-                ExpandScreen(product = productSample,
-                    onBackPressed = { navController.navigateUp() })
+                ExpandScreen(
+                    product = productSample,
+                    onBackPressed = { navController.navigateUp() }
+                )
             }
         }
     }

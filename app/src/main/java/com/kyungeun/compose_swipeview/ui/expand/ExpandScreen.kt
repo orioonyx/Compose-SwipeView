@@ -1,5 +1,7 @@
 package com.kyungeun.compose_swipeview.ui.expand
 
+import android.app.Activity
+import androidx.activity.compose.BackHandler
 import androidx.annotation.StringRes
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
@@ -20,6 +22,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -60,6 +63,13 @@ fun ExpandScreen(product: Product, onBackPressed: () -> Unit) {
         val dragRange = infoMaxHeightInPixels - infoMinHeightInPixels
         val scope = rememberCoroutineScope()
         val pagerState = rememberPagerState()
+
+        BackHandler(enabled = infoSheetState.currentValue == SheetState.Open) {
+            scope.launch {
+                infoSheetState.animateTo(SheetState.Closed)
+            }
+        }
+
         ConstraintLayout(
             Modifier
                 .fillMaxSize()
@@ -87,7 +97,7 @@ fun ExpandScreen(product: Product, onBackPressed: () -> Unit) {
             HorizontalPager(
                 count = product.imageList.size,
                 contentPadding = PaddingValues(horizontal = 0.dp),
-                state = rememberPagerState(),
+                state = pagerState,
                 modifier = Modifier
                     .clickable(
                         enabled = infoSheetState.currentValue == SheetState.Open,
@@ -123,7 +133,6 @@ fun ExpandScreen(product: Product, onBackPressed: () -> Unit) {
             }
 
             TopBar(
-                onBackPressed = onBackPressed,
                 modifier = Modifier
                     .height(64.dp)
                     .constrainAs(topBar) {
@@ -176,6 +185,29 @@ fun ExpandScreen(product: Product, onBackPressed: () -> Unit) {
         }
     }
 }
+//
+//@Composable
+//fun BackPressHandler(
+//    backPressedDispatcher: OnBackPressedDispatcher? =
+//        LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher,
+//    onBackPressed: () -> Unit
+//) {
+//    val currentOnBackPressed by rememberUpdatedState(newValue = onBackPressed)
+//
+//    val backCallback = remember {
+//        object : OnBackPressedCallback(true) {
+//            override fun handleOnBackPressed() {
+//                currentOnBackPressed()
+//            }
+//        }
+//    }
+//    DisposableEffect(key1 = backPressedDispatcher) {
+//        backPressedDispatcher?.addCallback(backCallback)
+//        onDispose {
+//            backCallback.remove()
+//        }
+//    }
+//}
 
 @Composable
 fun PageIndicator(modifier: Modifier, count: Int, currentPage: Int) {
@@ -186,26 +218,28 @@ fun PageIndicator(modifier: Modifier, count: Int, currentPage: Int) {
 }
 
 @Composable
-fun TopBar(modifier: Modifier, onBackPressed: () -> Unit) {
-    ConstraintLayout(modifier) {
-        val (back, _) = createRefs()
-        GradientScreen(modifier = Modifier.fillMaxSize(), 1f, 0f)
+fun TopBar(modifier: Modifier) {
+    val activity = LocalContext.current as Activity
 
-        IconButton(
-            onClick = onBackPressed,
-            Modifier.constrainAs(back) {
-                start.linkTo(parent.start, margin = 8.dp)
-                top.linkTo(parent.top, margin = 8.dp)
+    TopAppBar(
+        modifier = modifier,
+        title = { EMPTY },
+        backgroundColor = Color.Transparent,
+        elevation = 0.dp,
+        navigationIcon = {
+            IconButton(onClick = {
+                activity.onBackPressed()
             }
-        ) {
-            Icon(
-                imageVector = Icons.Filled.ArrowBack,
-                contentDescription = EMPTY,
-                tint = Color.White,
-                modifier = Modifier.size(28.dp)
-            )
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.ArrowBack,
+                    contentDescription = EMPTY,
+                    tint = Color.White,
+                    modifier = Modifier.size(28.dp)
+                )
+            }
         }
-    }
+    )
 }
 
 @Composable
@@ -479,7 +513,7 @@ fun PreviewExpandScreen() {
 @Composable
 fun PreviewExpandScreenDark() {
     ComposeSwipeViewTheme(darkTheme = true) {
-        val puppySample = ProductDataManager.getProduct()
-        ExpandScreen(puppySample) {}
+        val expandSample = ProductDataManager.getProduct()
+        ExpandScreen(expandSample) {}
     }
 }

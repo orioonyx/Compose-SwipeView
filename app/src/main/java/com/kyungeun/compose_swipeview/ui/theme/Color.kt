@@ -10,7 +10,3 @@ val BlueOnboarding = Color(0xFF6A91AC)
 
 val BackgroundLight = Color(0xFFF2F3F5)
 val BackgroundDark = Color(0xFF0A0A0A)
-
-val TextSecondaryDark = Color(0xFF8B8C8F)
-
-val Gray = Color(0xAEAEAEAE)
