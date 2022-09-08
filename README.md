@@ -1,15 +1,16 @@
 # Android Compose Samples
-This project app using Jetpack Compose UI.
+This project using Jetpack Compose UI.
 
 # Preview
-Swipe to expand
+------------------------------------
+* Swipe to expand
 ![](https://user-images.githubusercontent.com/74607521/189238678-a284d15b-26ac-40be-8234-3ae8010ed5f9.gif)
 
 #### 🌞 Light Mode
-![](https://user-images.githubusercontent.com/74607521/189238704-b87051e2-1a20-44fc-bbdd-aa4ca87be308.png)
+<img src="https://user-images.githubusercontent.com/74607521/189238704-b87051e2-1a20-44fc-bbdd-aa4ca87be308.png" width="260"/>
 
 #### 🌙 Dark Mode
-![](https://user-images.githubusercontent.com/74607521/189238696-aac3ccea-1c40-43d9-9cca-f976a5527bbc.png)
+<img src="https://user-images.githubusercontent.com/74607521/189238696-aac3ccea-1c40-43d9-9cca-f976a5527bbc.png" width="260"/>
 
 Developed By
 ------------------------------------
