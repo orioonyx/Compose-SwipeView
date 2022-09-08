@@ -234,7 +234,7 @@ fun TopBar(modifier: Modifier) {
                 Icon(
                     imageVector = Icons.Filled.ArrowBack,
                     contentDescription = EMPTY,
-                    tint = Color.White,
+                    tint = MaterialTheme.colors.primary,
                     modifier = Modifier.size(28.dp)
                 )
             }

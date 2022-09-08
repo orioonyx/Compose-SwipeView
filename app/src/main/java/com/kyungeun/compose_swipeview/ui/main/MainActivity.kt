@@ -8,10 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -38,10 +35,9 @@ class MainActivity : ComponentActivity() {
                     ) {
                         Spacer(modifier = Modifier.padding(20.dp))
                         Button(
-                            onClick = {
-                                context.startActivity(Intent(context, ExpandActivity::class.java))
-                            }) {
-                            Text(getString(R.string.swipe_expand))
+                            onClick = { context.startActivity(Intent(context, ExpandActivity::class.java))},
+                            colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.secondary)) {
+                            Text(getString(R.string.swipe_expand)).toString()
                         }
                     }
                 }
