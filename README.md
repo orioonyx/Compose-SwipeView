@@ -1,18 +1,15 @@
-# RxJava Android Samples
-
+# Android Compose Samples
 This project app using Jetpack Compose UI.
 
-
-
-Libraries used on the sample project
-------------------------------------
-* [RxJava](https://github.com/ReactiveX/RxJava)
-* [Retrofit2](https://github.com/square/retrofit)
-* ViewBinding
-
 # Preview
-![](https://user-images.githubusercontent.com/74607521/183982225-951ef889-3ae6-4138-a400-d70be5538139.gif)
+Swipe to expand
+![](https://user-images.githubusercontent.com/74607521/189238678-a284d15b-26ac-40be-8234-3ae8010ed5f9.gif)
 
+#### 🌞 Light Mode
+![](https://user-images.githubusercontent.com/74607521/189238704-b87051e2-1a20-44fc-bbdd-aa4ca87be308.png)
+
+#### 🌙 Dark Mode
+![](https://user-images.githubusercontent.com/74607521/189238696-aac3ccea-1c40-43d9-9cca-f976a5527bbc.png)
 
 Developed By
 ------------------------------------

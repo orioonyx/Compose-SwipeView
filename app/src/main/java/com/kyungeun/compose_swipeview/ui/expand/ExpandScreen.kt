@@ -415,14 +415,16 @@ private fun BookAlertDialog(
                     .fillMaxWidth()
                     .wrapContentHeight()
                     .clip(RoundedCornerShape(12.dp))
-                    .background(color = Color.White)
+                    .background(color = MaterialTheme.colors.primary)
             ) {
                 Text(
                     modifier = Modifier
                         .padding(top = 24.dp)
                         .padding(horizontal = 24.dp)
                         .align(Alignment.CenterHorizontally),
-                    text = "Book Completed!",
+                    style = MaterialTheme.typography.body2,
+                    color = MaterialTheme.colors.onPrimary,
+                    text = "Book Completed!"
                 )
                 LottieClickAnim()
                 Text(
@@ -433,7 +435,9 @@ private fun BookAlertDialog(
                             onDismissRequest()
                         }
                         .padding(12.dp),
-                    text = "Ok",
+                    style = MaterialTheme.typography.body2,
+                    color = MaterialTheme.colors.onPrimary,
+                    text = "Ok"
                 )
             }
         }
