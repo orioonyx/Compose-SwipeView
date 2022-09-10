@@ -1,9 +1,9 @@
 # Android Compose Samples 🚀
-This project using Jetpack Compose UI.
+This project using Jetpack Compose UI.<br/>
 Surfing dummy data was used.
 
 # Preview ✨
-* Swipe to expand
+#### * Swipe to expand
 ![](https://user-images.githubusercontent.com/74607521/189238678-a284d15b-26ac-40be-8234-3ae8010ed5f9.gif)
 
 #### 🌞 Light Mode
