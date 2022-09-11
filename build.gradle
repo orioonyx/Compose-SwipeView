@@ -6,6 +6,9 @@ buildscript {
         google()
         mavenCentral()
     }
+    dependencies {
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+    }
 }
 plugins {
     id 'com.android.application' version '7.2.1' apply false
@@ -17,4 +20,3 @@ plugins {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
