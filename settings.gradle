@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Compose-SwipeView"
 include ':app'
-include ':app:mylibrary'
+include ':library'

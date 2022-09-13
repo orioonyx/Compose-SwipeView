@@ -1,4 +1,4 @@
-package com.kyungeun.mylibrary
+package com.kyungeun.library
 
 import org.junit.Test
 
