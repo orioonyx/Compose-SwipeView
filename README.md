@@ -1,6 +1,9 @@
 <img src="https://user-images.githubusercontent.com/74607521/190123600-22ec5184-2cb6-4bde-a864-dec410598c3c.png" width="100%"/>
 
-[![Maven Central](https://jitpack.io/v/shruddms/Compose-SwipeView.svg)](https://jitpack.io/#shruddms/Compose-SwipeView)<br>
+<p align="left">
+<a href="https://jitpack.io/#shruddms/Compose-SwipeView"><img alt="Maven" src="https://jitpack.io/v/shruddms/Compose-SwipeView.svg"/></a>
+<a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
+</p>
 
 Compose-SwipeView is a scalable swipe view library made with Jetpack compose.
 
@@ -56,7 +59,7 @@ fun content() {
     )
 }
 ```
-
+<br/>
 # Demo projects 🚀
 This project using Compose-SwipeView library.<br/>
 Surfing dummy data was used.
