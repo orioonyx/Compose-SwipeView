@@ -185,29 +185,6 @@ fun ExpandScreen(product: Product, onBackPressed: () -> Unit) {
         }
     }
 }
-//
-//@Composable
-//fun BackPressHandler(
-//    backPressedDispatcher: OnBackPressedDispatcher? =
-//        LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher,
-//    onBackPressed: () -> Unit
-//) {
-//    val currentOnBackPressed by rememberUpdatedState(newValue = onBackPressed)
-//
-//    val backCallback = remember {
-//        object : OnBackPressedCallback(true) {
-//            override fun handleOnBackPressed() {
-//                currentOnBackPressed()
-//            }
-//        }
-//    }
-//    DisposableEffect(key1 = backPressedDispatcher) {
-//        backPressedDispatcher?.addCallback(backCallback)
-//        onDispose {
-//            backCallback.remove()
-//        }
-//    }
-//}
 
 @Composable
 fun PageIndicator(modifier: Modifier, count: Int, currentPage: Int) {
