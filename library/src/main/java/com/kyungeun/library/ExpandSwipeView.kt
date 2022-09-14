@@ -72,7 +72,7 @@ public fun ExpandSwipeView(
             } else {
                 -infoSheetState.offset.value / dragRange
             }.coerceIn(0f, 1f)
-            val (image, containerInfo, topBar, imageIndicator) = createRefs()
+            val (image, containerInfo, imageIndicator) = createRefs()
             val offsetY = LerpValue(
                 infoMaxHeightInPixels,
                 0f,
@@ -115,7 +115,6 @@ public fun ExpandSwipeView(
                     modifier = modifier.fillMaxSize()
                 )
             }
-
             PageIndicator(
                 modifier = modifier
                     .height(72.dp)
@@ -126,7 +125,6 @@ public fun ExpandSwipeView(
                     },
                 count = imageList.size, currentPage = state.currentPage
             )
-
             Surface(
                 shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp),
                 modifier = modifier
@@ -177,7 +175,7 @@ public fun PageIndicator(modifier: Modifier, count: Int, currentPage: Int) {
 public fun InfoContainer(
     modifier: Modifier,
     color: Color,
-    contents : @Composable ()-> Unit
+    contents: @Composable () -> Unit
 ) {
     Column(
         modifier

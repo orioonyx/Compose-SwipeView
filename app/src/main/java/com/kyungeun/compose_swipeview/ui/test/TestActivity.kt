@@ -23,6 +23,10 @@ import com.kyungeun.compose_swipeview.util.EMPTY
 import com.kyungeun.library.ExpandSwipeView
 import com.kyungeun.library.SheetState
 
+/**
+ * 'Compose-SwipeView' Library Test
+ * implementation 'com.github.shruddms:Compose-SwipeView:Tag'
+ */
 class TestActivity : ComponentActivity() {
 
     private lateinit var imageList: ArrayList<String>

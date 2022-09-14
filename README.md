@@ -1,5 +1,64 @@
-# Android Compose Samples 🚀
-This project using Jetpack Compose UI.<br/>
+<img src="https://user-images.githubusercontent.com/74607521/190123600-22ec5184-2cb6-4bde-a864-dec410598c3c.png" width="100%"/>
+
+[![Maven Central](https://jitpack.io/v/shruddms/Compose-SwipeView.svg)](https://jitpack.io/#shruddms/Compose-SwipeView)<br>
+
+Compose-SwipeView is a scalable swipe view library made with Jetpack compose.
+
+#### 🤔 How to use it?
+
+1. Add the codes below to your **root** `build.gradle` file (not your module-level build.gradle file):
+```gradle
+allprojects {
+    repositories {
+       maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+2. Add the dependency below to your **module**'s `build.gradle` file:
+```gradle
+dependencies {
+     implementation 'com.github.shruddms:Compose-SwipeView:X.X.X'
+}
+```
+
+3. Use this code inside your composable:
+```kotlin
+private lateinit var imageList: ArrayList<String>
+private var infoContainerMaxHeight = 600.dp
+private var infoContainerMinHeight = 120.dp
+```
+
+```kotlin
+ExpandSwipeView(
+    imageList = imageList,
+    imageScale = ContentScale.Crop,
+    modifier = Modifier,
+    state = rememberPagerState(),
+    infoSheetState = rememberSwipeableState(SheetState.Open),
+    infoContainerMaxHeight = infoContainerMaxHeight,
+    infoContainerMinHeight = infoContainerMinHeight,
+    contentBackgroundColor = MaterialTheme.colors.primary,
+    contents = { content() }
+)
+```
+
+```kotlin
+@Composable
+fun content() {
+    Text(
+        text = "Hello Word!",
+        color = MaterialTheme.colors.onPrimary,
+        style = MaterialTheme.typography.subtitle1,
+        overflow = TextOverflow.Ellipsis,
+        modifier = Modifier
+            .padding(20.dp)
+    )
+}
+```
+
+# Demo projects 🚀
+This project using Compose-SwipeView library.<br/>
 Surfing dummy data was used.
 
 # Preview ✨
