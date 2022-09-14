@@ -1,4 +1,4 @@
-<img src="https://user-images.githubusercontent.com/74607521/190123600-22ec5184-2cb6-4bde-a864-dec410598c3c.png" width="100%" height="150"/>
+<img src="https://user-images.githubusercontent.com/74607521/190224554-bbe07219-e82c-4a18-933f-fdccb87890d2.png" width="100%"/>
 
 <p align="left">
 <a href="https://jitpack.io/#shruddms/Compose-SwipeView"><img alt="Maven" src="https://jitpack.io/v/shruddms/Compose-SwipeView.svg"/></a>
