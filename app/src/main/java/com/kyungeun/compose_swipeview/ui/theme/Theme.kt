@@ -1,8 +1,6 @@
 package com.kyungeun.compose_swipeview.ui.theme
 
 import android.app.Activity
-import android.os.Build
-import android.view.View
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors

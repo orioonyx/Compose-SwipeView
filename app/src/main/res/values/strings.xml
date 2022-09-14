@@ -2,7 +2,8 @@
     <string name="app_name">Compose-SwipeView</string>
 
     <string name="swipe_expand">swipe to expand</string>
-
+    <string name="library_test">library test</string>
+    \
     <string name="label_price">Price</string>
     <string name="label_book">Book Now</string>
 
@@ -20,5 +21,6 @@
     <string name="summary3">She is a very shy girl that will need time to come out of her shell. Loud noises while walking do make her nervous so a confident and experienced owner is important. Since She is nervous with new things.</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_expand">ExpandActivity</string>
+    <string name="title_activity_test">TestActivity</string>
 
 </resources>

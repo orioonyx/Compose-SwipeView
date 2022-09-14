@@ -14,35 +14,39 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
+import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
-import com.kyungeun.library.util.lerp
+import com.kyungeun.library.util.LerpValue
 import com.kyungeun.library.util.verticalGradientScrim
 import com.skydoves.landscapist.coil.CoilImage
 import kotlinx.coroutines.launch
-
-
-private var InfoContainerMaxHeight = 600.dp
-private var InfoContainerMinHeight = 120.dp //title screen height
-private var imageList: List<String> = emptyList()
 
 public enum class SheetState { Open, Closed }
 
 @OptIn(ExperimentalMaterialApi::class, ExperimentalPagerApi::class)
 @Composable
-public fun ExpandSwipeView() {
+public fun ExpandSwipeView(
+    imageList: ArrayList<String>,
+    imageScale: ContentScale,
+    modifier: Modifier = Modifier,
+    state: PagerState = rememberPagerState(),
+    infoSheetState: SwipeableState<Any> = rememberSwipeableState(SheetState.Open),
+    infoContainerMaxHeight: Dp,
+    infoContainerMinHeight: Dp,
+    contentBackgroundColor: Color,
+    contents: @Composable () -> Unit
+) {
     BoxWithConstraints {
-        val infoSheetState = rememberSwipeableState(SheetState.Open)
-        val infoMaxHeightInPixels = with(LocalDensity.current) { InfoContainerMaxHeight.toPx() }
-        val infoMinHeightInPixels = with(LocalDensity.current) { InfoContainerMinHeight.toPx() }
+        val infoMaxHeightInPixels = with(LocalDensity.current) { infoContainerMaxHeight.toPx() }
+        val infoMinHeightInPixels = with(LocalDensity.current) { infoContainerMinHeight.toPx() }
         val dragRange = infoMaxHeightInPixels - infoMinHeightInPixels
         val scope = rememberCoroutineScope()
-        val pagerState = rememberPagerState()
 
         BackHandler(enabled = infoSheetState.currentValue == SheetState.Open) {
             scope.launch {
@@ -69,7 +73,7 @@ public fun ExpandSwipeView() {
                 -infoSheetState.offset.value / dragRange
             }.coerceIn(0f, 1f)
             val (image, containerInfo, topBar, imageIndicator) = createRefs()
-            val offsetY = lerp(
+            val offsetY = LerpValue(
                 infoMaxHeightInPixels,
                 0f,
                 openFraction
@@ -77,8 +81,8 @@ public fun ExpandSwipeView() {
             HorizontalPager(
                 count = imageList.size,
                 contentPadding = PaddingValues(horizontal = 0.dp),
-                state = pagerState,
-                modifier = Modifier
+                state = state,
+                modifier = modifier
                     .clickable(
                         enabled = infoSheetState.currentValue == SheetState.Open,
                         onClick = {
@@ -102,46 +106,45 @@ public fun ExpandSwipeView() {
                 CoilImage(
                     imageModel = imageList[page],
                     // Crop, Fit, Inside, FillHeight, FillWidth, None
-                    contentScale = ContentScale.Crop,
+                    contentScale = imageScale,
                     // shows a placeholder while loading the image.
                     //placeHolder = ImageBitmap.imageResource(R.drawable.placeholder),
                     // shows an error ImageBitmap when the request failed.
                     //error = ImageBitmap.imageResource(R.drawable.error)
                     contentDescription = null,
-                    modifier = Modifier.fillMaxSize()
+                    modifier = modifier.fillMaxSize()
                 )
             }
 
-
             PageIndicator(
-                modifier = Modifier
+                modifier = modifier
                     .height(72.dp)
                     .constrainAs(imageIndicator) {
                         bottom.linkTo(image.bottom, margin = 8.dp)
                         linkTo(start = parent.start, end = parent.end)
                         width = Dimension.fillToConstraints
                     },
-                count = imageList.size, currentPage = pagerState.currentPage
+                count = imageList.size, currentPage = state.currentPage
             )
 
             Surface(
                 shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp),
-                modifier = Modifier
+                modifier = modifier
                     .constrainAs(containerInfo) {
                         linkTo(start = parent.start, end = parent.end)
                         bottom.linkTo(parent.bottom)
                         width = Dimension.fillToConstraints
-                        val actualHeight = InfoContainerMaxHeight - offsetY.dp
+                        val actualHeight = infoContainerMaxHeight - offsetY.dp
                         height = Dimension.value(
                             actualHeight.coerceAtLeast(
-                                InfoContainerMinHeight
+                                infoContainerMinHeight
                             )
                         )
                     }
             ) {
                 InfoContainer(
-                    Modifier
-                        .height(InfoContainerMinHeight)
+                    modifier = modifier
+                        .height(infoContainerMinHeight)
                         .clickable(
                             enabled = infoSheetState.currentValue == SheetState.Closed,
                             onClick = {
@@ -149,7 +152,9 @@ public fun ExpandSwipeView() {
                                     infoSheetState.animateTo(SheetState.Open)
                                 }
                             }
-                        )
+                        ),
+                    color = contentBackgroundColor,
+                    contents = contents
                 )
             }
         }
@@ -169,21 +174,17 @@ public fun PageIndicator(modifier: Modifier, count: Int, currentPage: Int) {
 }
 
 @Composable
-public fun InfoContainer(modifier: Modifier) {
+public fun InfoContainer(
+    modifier: Modifier,
+    color: Color,
+    contents : @Composable ()-> Unit
+) {
     Column(
-        Modifier
+        modifier
             .fillMaxWidth()
-            .background(color = MaterialTheme.colors.primary)
+            .background(color = color)
     ) {
-        val rowsModifier = Modifier
-            .fillMaxWidth()
-            .padding(20.dp)
-        Text(
-            text = "Hello World!",
-            style = MaterialTheme.typography.body1,
-            overflow = TextOverflow.Ellipsis,
-            modifier = rowsModifier
-        )
+        contents()
     }
 }
 

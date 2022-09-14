@@ -17,6 +17,11 @@
         android:theme="@style/Theme.ComposeSwipeView"
         tools:targetApi="31">
         <activity
+            android:name=".ui.test.TestActivity"
+            android:exported="false"
+            android:label="@string/title_activity_test"
+            android:theme="@style/Theme.ComposeSwipeView" />
+        <activity
             android:name=".ui.expand.ExpandActivity"
             android:exported="false"
             android:label="@string/title_activity_expand"

@@ -15,6 +15,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.kyungeun.compose_swipeview.R
 import com.kyungeun.compose_swipeview.ui.expand.ExpandActivity
+import com.kyungeun.compose_swipeview.ui.test.TestActivity
 import com.kyungeun.compose_swipeview.ui.theme.ComposeSwipeViewTheme
 
 class MainActivity : ComponentActivity() {
@@ -38,6 +39,12 @@ class MainActivity : ComponentActivity() {
                             onClick = { context.startActivity(Intent(context, ExpandActivity::class.java))},
                             colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.secondary)) {
                             Text(getString(R.string.swipe_expand)).toString()
+                        }
+                        Spacer(modifier = Modifier.padding(20.dp))
+                        Button(
+                            onClick = { context.startActivity(Intent(context, TestActivity::class.java))},
+                            colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.secondary)) {
+                            Text(getString(R.string.library_test)).toString()
                         }
                     }
                 }
