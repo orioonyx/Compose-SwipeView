@@ -22,7 +22,7 @@ dependencies {
 }
 ```
 
-3. Use this code inside your composable:
+3. You can use simply by using function as the following example below:
 ```kotlin
 private lateinit var imageList: ArrayList<String>
 private var infoContainerMaxHeight = 600.dp
