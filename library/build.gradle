@@ -11,13 +11,13 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.kyungeun.library'
                 artifactId = 'library'
-                version = '1.0.1'
+                version = '1.0.2'
             }
             debug(MavenPublication) {
                 from components.debug
                 groupId = 'com.kyungeun.library'
                 artifactId = 'library'
-                version = '1.0.1'
+                version = '1.0.2'
             }
         }
     }

@@ -32,7 +32,7 @@ public enum class SheetState { Open, Closed }
 @OptIn(ExperimentalMaterialApi::class, ExperimentalPagerApi::class)
 @Composable
 public fun ExpandSwipeView(
-    imageList: ArrayList<String>,
+    imageList: ArrayList<Any>,
     imageScale: ContentScale,
     modifier: Modifier = Modifier,
     infoSheetState: SwipeableState<Any> = rememberSwipeableState(SheetState.Open),
