@@ -7,6 +7,17 @@
 
 Compose-SwipeView is a scalable swipe view library made with Jetpack compose.
 
+### Attributes
+| Attribute | Description |
+| ------ | ------ |
+| ```imageList``` | **image url** or **R.drawable.image** ArrayList |
+| ```imageScale``` | **Crop, Fit, Inside, FillHeight, FillWidth, None** |
+| ```infoSheetState``` | sheet state when view is opened |
+| ```infoContainerMaxHeight``` | container max height |
+| ```infoContainerMinHeight``` | container min height |
+| ```contentBackgroundColor``` | container background color |
+| ```contents``` | **@Composable fun** |
+
 #### 🤔 How to use it?
 
 1. Add the codes below to your **root** `build.gradle` file (not your module-level build.gradle file):
