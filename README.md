@@ -28,8 +28,6 @@ dependencies {
 3. You can use simply by using function as the following example below:
 ```kotlin
 private lateinit var imageList: ArrayList<Any>
-private var infoContainerMaxHeight = 600.dp
-private var infoContainerMinHeight = 120.dp
 ```
 
 ```kotlin
@@ -38,8 +36,8 @@ ExpandSwipeView(
     imageScale = ContentScale.Crop,
     modifier = Modifier,
     infoSheetState = rememberSwipeableState(SheetState.Open),
-    infoContainerMaxHeight = infoContainerMaxHeight,
-    infoContainerMinHeight = infoContainerMinHeight,
+    infoContainerMaxHeight = 600.dp,
+    infoContainerMinHeight = 120.dp,
     contentBackgroundColor = MaterialTheme.colors.primary,
     contents = { content() }
 )
