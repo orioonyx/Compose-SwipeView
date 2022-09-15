@@ -18,7 +18,7 @@ Compose-SwipeView is a scalable swipe view library made with Jetpack compose.
 | ```contentBackgroundColor``` | container background color |
 | ```contents``` | **@Composable fun** |
 
-#### 🤔 How to use it?
+### 🤔 How to use it?
 
 1. Add the codes below to your **root** `build.gradle` file (not your module-level build.gradle file):
 ```gradle
