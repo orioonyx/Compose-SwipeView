@@ -35,7 +35,6 @@ public fun ExpandSwipeView(
     imageList: ArrayList<String>,
     imageScale: ContentScale,
     modifier: Modifier = Modifier,
-    state: PagerState = rememberPagerState(),
     infoSheetState: SwipeableState<Any> = rememberSwipeableState(SheetState.Open),
     infoContainerMaxHeight: Dp,
     infoContainerMinHeight: Dp,
@@ -43,6 +42,7 @@ public fun ExpandSwipeView(
     contents: @Composable () -> Unit
 ) {
     BoxWithConstraints {
+        val state: PagerState = rememberPagerState()
         val infoMaxHeightInPixels = with(LocalDensity.current) { infoContainerMaxHeight.toPx() }
         val infoMinHeightInPixels = with(LocalDensity.current) { infoContainerMinHeight.toPx() }
         val dragRange = infoMaxHeightInPixels - infoMinHeightInPixels
